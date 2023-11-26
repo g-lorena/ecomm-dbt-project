@@ -17,6 +17,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
+      - name: Verify Secret Access
+        run: |
+          echo "DBT_ACCESS_TOKEN: ${{ secrets.DBT_ACCESS_TOKEN }}"
+      
       - name: Build Docker image
         id: build-image
         run: |
