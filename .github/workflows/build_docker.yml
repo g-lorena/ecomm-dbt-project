@@ -8,7 +8,7 @@ on:
 
 jobs:
   run-container:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
 
     env:
       DBT_ACCESS_TOKEN: ${{ secrets.DBT_ACCESS_TOKEN }}
