@@ -25,4 +25,4 @@ jobs:
       - name: Run Docker container
         id: run-container
         run: |
-          docker run -it my-docker-image:latest /bin/bash -e {0}
+          docker run my-docker-image:latest
