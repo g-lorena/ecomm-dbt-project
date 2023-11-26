@@ -1,0 +1,27 @@
+
+
+
+# packaging
+dbt_packages
+
+# PyBuilder
+target/
+
+# IDE settings
+.vscode/
+.idea/
+.DS_Store
+
+# dotenv
+.env
+
+#virtualenv
+myenv
+myenv/
+
+dbt_training
+dbt_training/
+
+# logs
+logs
+logs/

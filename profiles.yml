@@ -1,0 +1,9 @@
+e_commerce:
+  target:  dev 
+  outputs:
+    dev:
+      type: databricks
+      schema: default
+      host: "dbc-05831084-94d2.cloud.databricks.com"
+      http_path: "/sql/1.0/warehouses/c9c942b08209d99f"
+      token:  "{{ env_var('DBT_ACCESS_TOKEN') }}"  # NEVER write token directly in this file !

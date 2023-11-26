@@ -1,0 +1,29 @@
+
+version: 2
+
+models:
+  - name: stg_sales_target
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_order_details
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+sources:
+  - name: training
+    tables:
+      - name: sales_target
+      - name : order_details
+      - name : list_of_orders
+    schema: default
