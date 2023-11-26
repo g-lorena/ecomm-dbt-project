@@ -19,7 +19,6 @@ jobs:
       
       - name: Build Docker image
         id: build-image
-        uses: docker/build-push-action@v3
         run: |
           docker build -t my-docker-image:latest .
         with:
