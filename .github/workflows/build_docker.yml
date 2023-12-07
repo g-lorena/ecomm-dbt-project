@@ -43,7 +43,7 @@ jobs:
         run: |
           docker run -e DBT_ACCESS_TOKEN=$DBT_ACCESS_TOKEN my-docker-image:latest
 
-      -name: login into ecr
+      - name: login into ecr
         id: login-ecr
         run: |
           aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
