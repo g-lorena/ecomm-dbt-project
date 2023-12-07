@@ -18,10 +18,9 @@ jobs:
   run-container:
     name: Deploy your dockerize main Python on ECR
     runs-on: ubuntu-latest
-  
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       
       - name: Verify Secret Access
         run: |
