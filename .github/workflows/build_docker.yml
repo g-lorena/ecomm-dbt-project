@@ -38,10 +38,10 @@ jobs:
           role-session-name: rolesessionname
           aws-region:  ${{ env.AWS_REGION }}
       
-      - name: Run Docker container
-        id: run-container
-        run: |
-          docker run -e DBT_ACCESS_TOKEN=$DBT_ACCESS_TOKEN my-docker-image:latest
+     # - name: Run Docker container
+     #   id: run-container
+     #   run: |
+     #     docker run -e DBT_ACCESS_TOKEN=$DBT_ACCESS_TOKEN my-docker-image:latest
 
       - name: login into ecr
         id: login-ecr
