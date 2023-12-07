@@ -49,6 +49,10 @@ jobs:
         run: |
           aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
 
+      - name: verify image 
+        run: |
+          docker images
+
       - name : push Docker image in ECR
         id: push-image
         run: |
