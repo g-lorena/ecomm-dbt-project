@@ -31,7 +31,7 @@ jobs:
         id: build-image
         run: |
           docker build -t ${{ env.DOCKER_IMAGE }} .
-          docker tag ${{ env.DOCKER_IMAGE }} 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
+          docker tag ${{ env.DOCKER_IMAGE }} 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.DOCKER_IMAGE }}
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
