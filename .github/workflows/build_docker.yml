@@ -27,10 +27,11 @@ jobs:
         run: |
           echo "DBT_ACCESS_TOKEN: ${{ secrets.DBT_ACCESS_TOKEN }}"
       
-      - name: Build Docker image
+      - name: Build Docker image and tag image 
         id: build-image
         run: |
           docker build -t ${{ env.DOCKER_IMAGE }} .
+          docker tag ${{ env.DOCKER_IMAGE }} 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -56,5 +57,4 @@ jobs:
       - name : push Docker image in ECR
         id: push-image
         run: |
-          docker tag ${{ env.DOCKER_IMAGE }} 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
           docker push 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.DOCKER_IMAGE }}
