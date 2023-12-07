@@ -25,3 +25,7 @@ dbt_training/
 # logs
 logs
 logs/
+
+.user.yml
+__pycache__/
+package-lock.yml

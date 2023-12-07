@@ -1,4 +1,4 @@
-# use the official dbt Docker image as a parent image
+
 FROM python:3.10-slim-buster
 
 # setting the working directory to usr/
@@ -9,7 +9,6 @@ COPY tests tests
 COPY snapshots snapshots
 COPY macros macros
 COPY dbt_project.yml dbt_project.yml
-COPY Makefile Makefile
 COPY profiles.yml profiles.yml
 COPY requirements.txt requirements.txt
 COPY packages.yml packages.yml

@@ -6,13 +6,21 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  AWS_REGION: "eu-west-3"
+
+permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read    # This is required for actions/checkout
+
+
 jobs:
   run-container:
     runs-on: ubuntu-latest
 
     env:
       DBT_ACCESS_TOKEN: ${{ secrets.DBT_ACCESS_TOKEN }}
-
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -26,7 +34,24 @@ jobs:
         run: |
           docker build -t my-docker-image:latest .
       
+      - name: Configure  AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::957951454565:role/github-oidc-role
+          role-session-name: rolesessionname
+          aws-region:  ${{ env.AWS_REGION }}
+      
       - name: Run Docker container
         id: run-container
         run: |
           docker run -e DBT_ACCESS_TOKEN=$DBT_ACCESS_TOKEN my-docker-image:latest
+
+      -name: login into ecr
+        id: login-ecr
+        run: |
+          aws ecr get-login-password --region region | docker login --username AWS --password-stdin 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
+
+      - name : push Docker image in ECR
+        id: push-image
+        run: |
+          docker push 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/ecomm-dbt-project:1.0.0
