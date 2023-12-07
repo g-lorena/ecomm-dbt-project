@@ -6,9 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  AWS_REGION: "eu-west-3"
-
 permissions:
       id-token: write   # This is required for requesting the JWT
       contents: read    # This is required for actions/checkout
@@ -20,6 +17,7 @@ jobs:
 
     env:
       DBT_ACCESS_TOKEN: ${{ secrets.DBT_ACCESS_TOKEN }}
+      AWS_REGION: "eu-west-3"
       
     steps:
       - name: Checkout
