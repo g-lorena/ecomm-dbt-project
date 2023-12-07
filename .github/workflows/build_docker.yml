@@ -52,4 +52,5 @@ jobs:
       - name : push Docker image in ECR
         id: push-image
         run: |
+          docker tag ${{ env.DOCKER_IMAGE }} 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
           docker push 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.DOCKER_IMAGE }}
