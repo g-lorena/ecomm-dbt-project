@@ -8,6 +8,7 @@ on:
 env:
   DBT_ACCESS_TOKEN: ${{ secrets.DBT_ACCESS_TOKEN }}
   AWS_REGION: "eu-west-3"
+  DOCKER_IMAGE: ecomm-dbt-project:1.0.0
 
 permissions:
   id-token: write   # This is required for requesting the JWT
@@ -29,7 +30,7 @@ jobs:
       - name: Build Docker image
         id: build-image
         run: |
-          docker build -t my-docker-image:latest .
+          docker build -t ${{ env.DOCKER_IMAGE }} .
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -51,4 +52,4 @@ jobs:
       - name : push Docker image in ECR
         id: push-image
         run: |
-          docker push 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/ecomm-dbt-project:1.0.0
+          docker push 957951454565.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.DOCKER_IMAGE }}
