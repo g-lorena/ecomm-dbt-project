@@ -8,7 +8,7 @@ on:
 env:
   DBT_ACCESS_TOKEN: ${{ secrets.DBT_ACCESS_TOKEN }}
   AWS_REGION: "eu-west-3"
-  DOCKER_IMAGE: ecomm-dbt-project:1.0.0
+  DOCKER_IMAGE: ecomm-dbt-project:1.0.1
   PROJECT_DIR: "${GITHUB_WORKSPACE}"
 
 permissions:
