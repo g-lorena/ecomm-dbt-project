@@ -69,6 +69,14 @@ jobs:
         run: |
           ls -R $PROJECT_DIR
 
+      - name: Check if ecom_dag.py exists
+        run: |
+          if [ -f "$PROJECT_DIR/ecom_dag.py" ]; then
+            echo "ecom_dag.py exists."
+          else
+            echo "ecom_dag.py does not exist."
+          fi
+
       - name : push Airflow Dags in S3 Bucket
         id: push-dag
         run: |
