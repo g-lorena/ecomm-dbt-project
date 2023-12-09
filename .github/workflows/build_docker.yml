@@ -9,7 +9,7 @@ env:
   DBT_ACCESS_TOKEN: ${{ secrets.DBT_ACCESS_TOKEN }}
   AWS_REGION: "eu-west-3"
   DOCKER_IMAGE: ecomm-dbt-project:1.0.1
-  PROJECT_DIR: "${GITHUB_WORKSPACE}"
+  PROJECT_DIR: "$(pwd)"
 
 permissions:
   id-token: write   # This is required for requesting the JWT
