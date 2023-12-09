@@ -71,7 +71,7 @@ jobs:
 
       - name: Check if ecom_dag.py exists
         run: |
-          if [ -f "$PROJECT_DIR/ecom_dag.py" ]; then
+          if [ -f "ecomm-dbt-project/ecom_dag.py" ]; then
             echo "ecom_dag.py exists."
           else
             echo "ecom_dag.py does not exist."
