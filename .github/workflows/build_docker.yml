@@ -64,13 +64,17 @@ jobs:
           echo "Setting up project directory"
           PROJECT_DIR=$(pwd)
           echo "Project directory: $PROJECT_DIR"
+          
+      - name: Debug - List Files in Project Directory
+        run: |
+          ls -R $PROJECT_DIR
 
       - name : push Airflow Dags in S3 Bucket
         id: push-dag
         run: |
-          aws s3 cp $PROJECT_DIR/ecom_dag.py s3://dbt-projects-airflow-bucket/DAGs/
+          aws s3 cp $PROJECT_DIR/ecom_dag.py s3://dbt-projects-airflow-bucket/DAGs/ecom_dag.py
         
       - name : push Airflow requirements in S3 Bucket
         id: push-requirements
         run: |
-          aws s3 cp $PROJECT_DIR/airflow_requirements.txt s3://dbt-projects-airflow-bucket/
+          aws s3 cp $PROJECT_DIR/airflow_requirements.txt s3://dbt-projects-airflow-bucket/airflow_requirements.txt
