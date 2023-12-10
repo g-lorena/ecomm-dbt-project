@@ -73,7 +73,6 @@ jobs:
         shell: bash
         run: |
           echo "Absolute path to ecom_dag.py: $(realpath $PROJECT_DIR/ecom_dag.py)"
-          ls -l /ecom_dag.py
 
       - name : push Airflow Dags in S3 Bucket
         id: push-dag
