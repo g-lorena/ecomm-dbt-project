@@ -72,9 +72,9 @@ jobs:
       - name : push Airflow Dags in S3 Bucket
         id: push-dag
         run: |
-          aws s3 sync ./ecom_dag.py s3://dbt-projects-airflow-bucket/DAGs/ecom_dag.py
+          aws s3 cp ./ecom_dag.py s3://dbt-projects-airflow-bucket/DAGs/ecom_dag.py
         
       - name : push Airflow requirements in S3 Bucket
         id: push-requirements
         run: |
-          aws s3 sync ./airflow_requirements.txt s3://dbt-projects-airflow-bucket/airflow_requirements.txt
+          aws s3 cp ./airflow_requirements.txt s3://dbt-projects-airflow-bucket/airflow_requirements.txt
