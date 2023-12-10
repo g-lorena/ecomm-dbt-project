@@ -69,13 +69,10 @@ jobs:
         run: |
           ls -R $PROJECT_DIR
 
-      - name: Check if ecom_dag.py exists
+      - name: Get absolute path to ecom_dag.py
+        shell: bash
         run: |
-          if [ -f "ecomm-dbt-project/ecom_dag.py" ]; then
-            echo "ecom_dag.py exists."
-          else
-            echo "ecom_dag.py does not exist."
-          fi
+          echo "Absolute path to ecom_dag.py: $(realpath $PROJECT_DIR/ecom_dag.py)"
 
       - name : push Airflow Dags in S3 Bucket
         id: push-dag
