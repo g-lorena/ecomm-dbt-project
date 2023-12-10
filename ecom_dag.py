@@ -18,6 +18,7 @@ run_main_py = DockerOperator(
     command='python /usr/python/dbt_run.py',  # Command to execute main.py within the container
     docker_conn_id='docker',
     api_version='auto',
+    network_mode="bridge",
     dag=dag,
 )
 
