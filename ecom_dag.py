@@ -5,11 +5,11 @@ from airflow.providers.docker.operators.docker import DockerOperator
 # Define your Airflow DAG
 default_args = {
     'owner': 'airflow',
-    'start_date': datetime(2023, 12, 1),
+    'start_date': datetime(2023, 1, 1),
     'retries': 1,
 }
 
-dag = DAG('run_main_py_in_ecr_container', default_args=default_args, schedule_interval='@daily')
+dag = DAG('run_main_py_in_ecr_container', default_args=default_args, schedule="40 5 16 * *")
 
 # Define the task to run main.py using DockerOperator
 run_main_py = DockerOperator(
