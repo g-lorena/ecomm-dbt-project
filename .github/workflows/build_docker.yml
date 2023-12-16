@@ -48,7 +48,7 @@ jobs:
         id: ecr-login
         run: |
           LOGIN=$(aws ecr get-login-password --region ${{ env.AWS_REGION }})
-          echo "::set-output name=password::$LOGIN"
+          echo "ECR Login Password: $LOGIN"
 
       - name: login into ecr
         id: login-ecr
