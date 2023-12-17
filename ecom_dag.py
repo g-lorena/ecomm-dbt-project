@@ -1,6 +1,7 @@
 from datetime import datetime
 from airflow import DAG
-from airflow.providers.docker.operators.docker import DockerOperator
+from airflow.providers.docker.operators.docker import PythonOperator
+from airflow.operators.bash_operator import BashOperator
 
 # Define your Airflow DAG
 default_args = {
@@ -11,7 +12,15 @@ default_args = {
 
 dag = DAG('run_main_py_in_ecr_container', default_args=default_args, schedule="40 5 16 * *")
 
+hello_world_task = BashOperator(
+    task_id='hello_world_task',
+    bash_command='python -c "print(\'Hello, world!\')"',
+    dag=dag
+)
+
+
 # Define the task to run main.py using DockerOperator
+''' 
 run_main_py = DockerOperator(
     task_id='run_main_py_in_ecr_container',
     image='957951454565.dkr.ecr.eu-west-3.amazonaws.com/ecomm-dbt-project:1.0.1',  # Replace with your ECR image and tag
@@ -22,5 +31,6 @@ run_main_py = DockerOperator(
     dag=dag
     
 )
+'''
 
-run_main_py
+hello_world_task
