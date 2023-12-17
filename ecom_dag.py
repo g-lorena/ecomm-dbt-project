@@ -19,8 +19,7 @@ run_main_py = DockerOperator(
     docker_conn_id='docker_registry',
     api_version='auto',
     network_mode="bridge",
-    dag=dag,
-    docker_url='tcp://ec2-15-236-113-163.eu-west-3.compute.amazonaws.com:1111'
+    dag=dag
     
 )
 
