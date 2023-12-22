@@ -35,7 +35,7 @@ run_main_py = DockerOperator(
     dag=dag 
 )
 '''
-run_main_py
+#run_main_py
 
 # Define the task dependency
 hello_task
