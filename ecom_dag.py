@@ -26,13 +26,12 @@ hello_task = PythonOperator(
 # Define the task to run main.py using DockerOperator
 
 run_main_py = DockerOperator(
-    task_id='run_main_py_in_ecr_container',
-    image='957951454565.dkr.ecr.eu-west-3.amazonaws.com/ecomm-dbt-project:1.0.1',  # Replace with your ECR image and tag
-    command='python /usr/python/dbt_run.py',  # Command to execute main.py within the container
-    docker_conn_id='docker_registry',
-    api_version='auto',
-    network_mode="bridge",
-    dag=dag 
+    task_id='pull_hello_world',
+    image='hello-world',  # Docker Hub image name
+    api_version='auto',   # Use Docker API version automatically detected
+    auto_remove=True,     # Remove the container after execution
+    command='echo Hello from Docker!',  # Command to be executed in the container
+    dag=dag
 )
 
 run_main_py
