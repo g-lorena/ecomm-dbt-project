@@ -12,12 +12,6 @@ default_args = {
 
 dag = DAG('run_main_py_in_ecr_container', default_args=default_args, schedule="40 5 16 * *")
 
-hello_world_task = BashOperator(
-    task_id='hello_world_task',
-    bash_command='python -c "print(\'Hello, world!\')"',
-    dag=dag
-)
-''' 
 # Define the task to run main.py using DockerOperator
 run_main_py = DockerOperator(
     task_id='run_main_py_in_ecr_container',
@@ -29,6 +23,5 @@ run_main_py = DockerOperator(
     dag=dag
     
 )
-'''
 
-hello_world_task
+run_main_py
